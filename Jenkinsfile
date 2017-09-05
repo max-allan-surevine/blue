@@ -14,23 +14,14 @@ pipeline {
     stage('Builds') {
       steps {
         parallel(
-          "Build core": {
-            sh 'sleep 1'
-            
-          },
-          "Build component": {
-            sh 'sleep 2'
-            
-          }
+          "Build core": { try {sh 'sleep 1'} },
+          "Build component": { sh 'sleep 2'}
         )
       }
     }
     stage('Test') {
       steps {
-        waitUntil() {
-          sleep 1
-        }
-        
+        sleep 1
       }
     }
     stage('Deploy') {
