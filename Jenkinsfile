@@ -11,7 +11,7 @@ pipeline {
         sh 'sleep 1'
       }
     }
-    stage('') {
+    stage('error') {
       steps {
         parallel(
           "Build core": {
@@ -35,10 +35,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        catchError() {
-          sleep 1
-        }
-        
+        sleep 1
       }
     }
   }
