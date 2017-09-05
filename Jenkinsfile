@@ -14,7 +14,7 @@ pipeline {
     stage('Builds') {
       steps {
         parallel(
-          "Build core": { try {sh 'sleep 1'} },
+          "Build core": { sh 'sleep 1' },
           "Build component": { sh 'sleep 2'}
         )
       }
